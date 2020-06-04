@@ -50,7 +50,7 @@ const CreatePoint = () => {
 
       setInitialPosition([latitude, longitude]);
     })
-  });
+  }, []);
 
   useEffect(() => {
     api.get('items').then(response => {
