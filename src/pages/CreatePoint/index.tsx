@@ -9,6 +9,8 @@ import api from '../../services/api';
 import './styles.css';
 
 import logo from '../../assets/logo.svg';
+import Success from '../Sucess';
+
 
 interface Item {
   id: number;
@@ -30,6 +32,7 @@ const CreatePoint = () => {
   const [cities, setCities] = useState<string[]>([]);
 
   const [initialPosition, setInitialPosition] = useState<[number, number]>([0,0]);
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -139,9 +142,12 @@ const CreatePoint = () => {
 
     await api.post('/points', data);
 
-    alert('Ponto de coleta criado!');
+    setShowModal(true);
 
-    history.push('/');
+    setTimeout(function() {
+      setShowModal(false);
+      history.push('/');
+    }, 2000);
   }
 
   return (
@@ -153,6 +159,8 @@ const CreatePoint = () => {
           Voltar para home
           </Link>
       </header>
+
+    <Success show={ showModal }/>
 
       <form onSubmit={handleSubmit}>
         <h1>Cadastro do <br></br> ponto de coleta</h1>
