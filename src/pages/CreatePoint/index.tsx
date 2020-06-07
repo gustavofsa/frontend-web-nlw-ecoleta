@@ -6,6 +6,8 @@ import axios from 'axios';
 import { LeafletMouseEvent } from 'leaflet'
 import api from '../../services/api';
 
+import Dropzone from '../../components/Dropzone';
+
 import './styles.css';
 
 import logo from '../../assets/logo.svg';
@@ -163,7 +165,9 @@ const CreatePoint = () => {
     <Success show={ showModal }/>
 
       <form onSubmit={handleSubmit}>
-        <h1>Cadastro do <br></br> ponto de coleta</h1>
+        <h1>Cadastro do <br/> ponto de coleta</h1>
+
+        <Dropzone />
 
         <fieldset>
           <legend>
